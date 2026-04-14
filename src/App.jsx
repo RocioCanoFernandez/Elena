@@ -46,6 +46,24 @@ const SeviAIHub = () => {
     { id: 'tiktok', title: "TikTok", url: "https://tiktok.com/@elenagarcia.socialmedia", icon: MessageSquare, subtitle: "Tips de comunicación" }
   ];
 
+  const services = [
+    {
+      title: "Auditoría de redes sociales",
+      forWho: "Pymes que ya tienen redes activas, pero no ven resultados o quieren tener una opinión profesional para mejorarlas.",
+      whatIsIt: "Analizo tus perfiles y te entrego un diagnóstico claro con mejoras concretas y accionables para optimizar tu presencia."
+    },
+    {
+      title: "Asesoría de redes sociales",
+      forWho: "Pymes que quieren aprender a gestionar sus redes con criterio, acompañamiento profesional y una hoja de ruta clara.",
+      whatIsIt: "Sesiones formativas y prácticas personalizadas donde aprenderás qué hacer, cómo hacerlo y por qué. Aprenderás a tomar decisiones estratégicas para conseguir los resultados que necesitas."
+    },
+    {
+      title: "Gestión integral de redes sociales",
+      forWho: "Pymes que quieren delegar completamente sus redes a un profesional.",
+      whatIsIt: "Me encargo de todo: planificación, creación de contenido, publicación y seguimiento, asegurando una presencia coherente, constante y alineada con los objetivos de tu marca."
+    }
+  ];
+
   return (
     <div className="min-h-screen font-sans flex flex-col items-center relative transition-all" style={{ backgroundColor: colors.bgMain, color: colors.dark, selectionBackgroundColor: colors.secondary, selectionTextColor: '#fff' }}>
       
@@ -159,8 +177,31 @@ const SeviAIHub = () => {
             ))}
           </div>
           
+          {/* Servicios */}
+          <div className="mt-8 mb-4 w-full">
+            <h3 className="text-[11px] font-bold uppercase tracking-widest mb-4 px-2 opacity-70 text-center" style={{ color: colors.dark }}>Mis Servicios</h3>
+            <div className="flex flex-col gap-4">
+              {services.map((service, index) => (
+                <div key={index} className="p-5 rounded-3xl transition-all shadow-sm border relative overflow-hidden" style={{ backgroundColor: 'white', borderColor: colors.border }}>
+                  <div className="absolute top-0 left-0 w-1.5 h-full opacity-60" style={{ backgroundColor: colors.primary }}></div>
+                  <h4 className="text-[18px] font-extrabold mb-3 leading-tight" style={{ color: colors.primary }}>
+                    {service.title}
+                  </h4>
+                  <div className="mb-3">
+                    <span className="text-[11px] font-black uppercase tracking-wider opacity-90 block mb-0.5" style={{ color: colors.secondary }}>Para quién es:</span>
+                    <p className="text-[14px] font-medium leading-relaxed" style={{ color: colors.dark }}>{service.forWho}</p>
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-black uppercase tracking-wider opacity-90 block mb-0.5" style={{ color: colors.secondary }}>En qué consiste:</span>
+                    <p className="text-[14px] font-medium leading-relaxed" style={{ color: colors.dark }}>{service.whatIsIt}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          
           {/* Horario de Atención */}
-          <div className="mt-2 pt-6 pb-2" style={{ borderTop: `1px dashed ${colors.border}` }}>
+          <div className="mt-4 pt-6 pb-2" style={{ borderTop: `1px dashed ${colors.border}` }}>
             <div className="rounded-3xl p-6 relative overflow-hidden group transition-all" style={{ backgroundColor: colors.bgAlt }}>
               <h3 className="text-sm font-bold mb-3 flex items-center justify-center gap-2 uppercase tracking-wide opacity-80" style={{ color: colors.dark }}>
                  <Clock className="w-4 h-4" style={{ color: colors.primary }} /> Horario de atención
