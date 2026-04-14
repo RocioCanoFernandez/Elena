@@ -2,19 +2,19 @@ import React from 'react';
 import { Mail, Phone, MapPin, Clock, Calendar, ChevronRight, MessageCircle, Download, Instagram, Linkedin, MessageSquare, Briefcase } from 'lucide-react';
 
 const colors = {
-  primary: '#5E2A74', // morado ciruela profundo
-  secondary: '#7B5A98', // violeta medio
-  soft: '#9C82B3', // lavanda grisácea
-  dark: '#1E1A35', // azul tinta oscuro
-  bgMain: '#F8F6FA', // marfil / blanco cálido
-  bgAlt: '#F1ECF6', // lila pálido
-  border: '#CBBFD8', // gris malva suave
+  primary: '#7A578B', 
+  secondary: '#7A578B', 
+  soft: '#7A578B', 
+  dark: '#7A578B', 
+  bgMain: '#BDA9C6', 
+  bgAlt: '#B5A0BE', // Ligeramente más oscuro que el fondo para botones
+  border: '#A790B0', // Borde acorde
 };
 
 const SeviAIHub = () => {
   const hubData = {
     name: "Elena García",
-    activity: "Social media manager con 15 años de experiencia",
+    activity: "Social Media Manager con 15 años de experiencia",
     email: "elena.mgarcia.s@gmail.com",
     phone: "+34 687 65 28 46",
     whatsapp: "34687652846",
@@ -41,9 +41,9 @@ const SeviAIHub = () => {
   };
 
   const primaryLinks = [
-    { id: 'instagram', title: "Instagram", url: "#", icon: Instagram, subtitle: "Contenido y novedades" },
-    { id: 'linkedin', title: "LinkedIn", url: "#", icon: Linkedin, subtitle: "Perfil profesional" },
-    { id: 'tiktok', title: "TikTok", url: "#", icon: MessageSquare, subtitle: "Tips de comunicación" }
+    { id: 'instagram', title: "Instagram", url: "https://www.instagram.com/elena.socialmedia", icon: Instagram, subtitle: "Contenido y novedades" },
+    { id: 'linkedin', title: "LinkedIn", url: "https://www.linkedin.com/in/elenagarciasanchez", icon: Linkedin, subtitle: "Perfil profesional" },
+    { id: 'tiktok', title: "TikTok", url: "https://tiktok.com/@elenagarcia.socialmedia", icon: MessageSquare, subtitle: "Tips de comunicación" }
   ];
 
   const secondaryLinks = [
@@ -107,7 +107,7 @@ const SeviAIHub = () => {
               "Todo empieza con estar presente.<br/>Pero que te recuerden lo cambia todo."
             </h3>
             <p className="text-[15px] leading-relaxed opacity-80 max-w-[280px]" style={{ color: colors.dark }}>
-              Ayudo a pymes a profesionalizar su presencia en redes sociales a través de auditorías, asesorías o gestión integral de redes.
+              Ayudo a pymes a profesionalizar su presencia en Redes Sociales a través de auditorías, asesorías o gestión integral de redes.
             </p>
           </div>
 
