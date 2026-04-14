@@ -129,6 +129,29 @@ const SeviAIHub = () => {
         {/* Zona de Botones y Enlaces */}
         <div className="px-6 flex flex-col gap-0 w-full flex-grow">
           
+          {/* Servicios */}
+          <div className="mb-8 w-full">
+            <h3 className="text-[11px] font-bold uppercase tracking-widest mb-4 px-2 opacity-70 text-center" style={{ color: colors.dark }}>Mis Servicios</h3>
+            <div className="flex flex-col gap-4">
+              {services.map((service, index) => (
+                <div key={index} className="p-5 rounded-3xl transition-all shadow-sm border relative overflow-hidden" style={{ backgroundColor: 'white', borderColor: colors.border }}>
+                  <div className="absolute top-0 left-0 w-1.5 h-full opacity-60" style={{ backgroundColor: colors.primary }}></div>
+                  <h4 className="text-[18px] font-extrabold mb-3 leading-tight" style={{ color: colors.primary }}>
+                    {service.title}
+                  </h4>
+                  <div className="mb-3">
+                    <span className="text-[11px] font-black uppercase tracking-wider opacity-90 block mb-0.5" style={{ color: colors.secondary }}>Para quién es:</span>
+                    <p className="text-[14px] font-medium leading-relaxed" style={{ color: colors.dark }}>{service.forWho}</p>
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-black uppercase tracking-wider opacity-90 block mb-0.5" style={{ color: colors.secondary }}>En qué consiste:</span>
+                    <p className="text-[14px] font-medium leading-relaxed" style={{ color: colors.dark }}>{service.whatIsIt}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* CTA Principal y Destacado */}
           <a 
             href={ctaLink.url}
@@ -175,29 +198,6 @@ const SeviAIHub = () => {
                 <ChevronRight className="w-5 h-5 transform group-hover:translate-x-1 transition-all" style={{ color: colors.soft }} />
               </a>
             ))}
-          </div>
-          
-          {/* Servicios */}
-          <div className="mt-8 mb-4 w-full">
-            <h3 className="text-[11px] font-bold uppercase tracking-widest mb-4 px-2 opacity-70 text-center" style={{ color: colors.dark }}>Mis Servicios</h3>
-            <div className="flex flex-col gap-4">
-              {services.map((service, index) => (
-                <div key={index} className="p-5 rounded-3xl transition-all shadow-sm border relative overflow-hidden" style={{ backgroundColor: 'white', borderColor: colors.border }}>
-                  <div className="absolute top-0 left-0 w-1.5 h-full opacity-60" style={{ backgroundColor: colors.primary }}></div>
-                  <h4 className="text-[18px] font-extrabold mb-3 leading-tight" style={{ color: colors.primary }}>
-                    {service.title}
-                  </h4>
-                  <div className="mb-3">
-                    <span className="text-[11px] font-black uppercase tracking-wider opacity-90 block mb-0.5" style={{ color: colors.secondary }}>Para quién es:</span>
-                    <p className="text-[14px] font-medium leading-relaxed" style={{ color: colors.dark }}>{service.forWho}</p>
-                  </div>
-                  <div>
-                    <span className="text-[11px] font-black uppercase tracking-wider opacity-90 block mb-0.5" style={{ color: colors.secondary }}>En qué consiste:</span>
-                    <p className="text-[14px] font-medium leading-relaxed" style={{ color: colors.dark }}>{service.whatIsIt}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
           
           {/* Horario de Atención */}
