@@ -83,30 +83,30 @@ const SeviAIHub = () => {
           )}
 
           {/* Nombre y Actividad */}
-          <h1 className="text-[28px] font-black mb-1 leading-tight tracking-tight" style={{ color: colors.dark }}>
+          <h1 className="text-[26px] font-extrabold mb-1.5 leading-tight tracking-tight" style={{ color: colors.dark }}>
             {hubData.name}
           </h1>
           
-          <h2 className="text-sm font-semibold mb-5 pb-3 border-b" style={{ color: colors.secondary, borderColor: colors.border }}>
+          <h2 className="text-[15px] font-medium mb-6 pb-4 border-b" style={{ color: colors.secondary, borderColor: colors.border }}>
             {hubData.activity}
           </h2>
 
           {/* Contacto Directo Cabecera */}
-          <div className="flex flex-col gap-2 w-full max-w-[200px] mb-8 text-[13px] font-medium" style={{ color: colors.dark }}>
-            <a href={`mailto:${hubData.email}`} className="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity bg-white/50 px-3 py-1.5 rounded-full border" style={{ borderColor: colors.border }}>
-              <Mail className="w-4 h-4" style={{ color: colors.primary }} /> <span className="truncate">{hubData.email}</span>
+          <div className="flex flex-col gap-3 w-full mb-8 text-[13px] font-medium px-2" style={{ color: colors.dark }}>
+            <a href={`mailto:${hubData.email}`} className="flex items-center justify-center gap-2 opacity-80 hover:opacity-100 transition-opacity bg-white/60 py-2.5 px-4 rounded-full border shadow-sm hover:shadow" style={{ borderColor: colors.border }}>
+              <Mail className="w-4 h-4" style={{ color: colors.primary }} /> <span>{hubData.email}</span>
             </a>
-            <a href={`tel:${hubData.phone.replace(/ /g, '')}`} className="flex items-center justify-center gap-2 opacity-80 hover:opacity-100 transition-opacity bg-white/50 px-3 py-1.5 rounded-full border" style={{ borderColor: colors.border }}>
-              <Phone className="w-4 h-4" style={{ color: colors.primary }} /> {hubData.phone}
+            <a href={`tel:${hubData.phone.replace(/ /g, '')}`} className="flex items-center justify-center gap-2 opacity-80 hover:opacity-100 transition-opacity bg-white/60 py-2.5 px-4 rounded-full border shadow-sm hover:shadow" style={{ borderColor: colors.border }}>
+              <Phone className="w-4 h-4" style={{ color: colors.primary }} /> <span>{hubData.phone}</span>
             </a>
           </div>
           
           {/* Frase Principal y Descripción */}
           <div className="mb-10 w-full px-2 text-center flex flex-col items-center">
-            <h3 className="text-[22px] font-bold leading-[1.2] mb-4 font-serif italic" style={{ color: colors.primary }}>
+            <h3 className="text-[20px] font-bold leading-snug mb-3 italic" style={{ color: colors.primary }}>
               "Todo empieza con estar presente.<br/>Pero que te recuerden lo cambia todo."
             </h3>
-            <p className="text-[14px] leading-relaxed opacity-80 max-w-[280px]" style={{ color: colors.dark }}>
+            <p className="text-[15px] leading-relaxed opacity-80 max-w-[280px]" style={{ color: colors.dark }}>
               Ayudo a pymes a profesionalizar su presencia en redes sociales a través de auditorías, asesorías o gestión integral de redes.
             </p>
           </div>
@@ -164,42 +164,16 @@ const SeviAIHub = () => {
             ))}
           </div>
           
-          {/* Enlaces Secundarios */}
+          {/* Horario de Atención */}
           <div className="mt-2 pt-6 pb-2" style={{ borderTop: `1px dashed ${colors.border}` }}>
-             <p className="text-[11px] font-bold uppercase tracking-widest mb-4 px-1 opacity-70" style={{ color: colors.dark }}>Contacto & Más</p>
-             <div className="grid grid-cols-2 gap-3">
-               {secondaryLinks.map((link) => (
-                 <a 
-                   key={link.id} 
-                   href={link.url} 
-                   className="group flex flex-col items-center justify-center gap-2 p-4 rounded-3xl transition-all text-xs font-semibold hover:bg-white hover:shadow-sm"
-                   style={{
-                     backgroundColor: 'transparent',
-                     border: `1px solid ${colors.border}`,
-                     color: colors.dark
-                   }}
-                 >
-                   <div className="w-10 h-10 rounded-[14px] flex flex-shrink-0 items-center justify-center" style={{ backgroundColor: colors.bgAlt, color: colors.primary }}>
-                     <link.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                   </div>
-                   <span className="truncate">{link.title}</span>
-                 </a>
-               ))}
-               <button 
-                 onClick={handleSaveContact} 
-                 className="group flex flex-col items-center justify-center gap-2 p-4 rounded-3xl transition-all text-xs font-semibold hover:bg-white hover:shadow-sm"
-                 style={{
-                   backgroundColor: 'transparent',
-                   border: `1px solid ${colors.border}`,
-                   color: colors.dark
-                 }}
-               >
-                 <div className="w-10 h-10 rounded-[14px] flex flex-shrink-0 items-center justify-center" style={{ backgroundColor: colors.bgAlt, color: colors.primary }}>
-                   <Download className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                 </div>
-                 <span className="truncate">Guardar contacto</span>
-               </button>
-             </div>
+            <div className="rounded-3xl p-6 relative overflow-hidden group transition-all" style={{ backgroundColor: colors.bgAlt }}>
+              <h3 className="text-sm font-bold mb-3 flex items-center justify-center gap-2 uppercase tracking-wide opacity-80" style={{ color: colors.dark }}>
+                 <Clock className="w-4 h-4" style={{ color: colors.primary }} /> Horario de atención
+              </h3>
+              <p className="text-[15px] font-medium leading-relaxed text-center" style={{ color: colors.dark }}>
+                9:00 a 14:00 y de 17:00 a 19:00
+              </p>
+            </div>
           </div>
 
         </div>
