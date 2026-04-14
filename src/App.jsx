@@ -37,7 +37,7 @@ const SeviAIHub = () => {
   };
 
   const ctaLink = {
-    id: 'cta', title: "Trabaja conmigo", url: `mailto:${hubData.email}`, icon: Briefcase, subtitle: "Agenda una asesoría o solicita gestión de redes"
+    id: 'cta', title: "Trabajemos juntos", url: `mailto:${hubData.email}`, icon: Briefcase, subtitle: "Agenda una primera consulta gratis"
   };
 
   const primaryLinks = [
@@ -46,13 +46,8 @@ const SeviAIHub = () => {
     { id: 'tiktok', title: "TikTok", url: "https://tiktok.com/@elenagarcia.socialmedia", icon: MessageSquare, subtitle: "Tips de comunicación" }
   ];
 
-  const secondaryLinks = [
-    { id: 'email', title: "Enviar email", url: `mailto:${hubData.email}`, icon: Mail, subtitle: "elena.mgarcia.s@gmail.com" },
-    { id: 'llamar', title: "Llamar", url: `tel:${hubData.phone.replace(/ /g, '')}`, icon: Phone, subtitle: "Contacto directo" }
-  ];
-
   return (
-    <div className="min-h-screen font-sans flex flex-col items-center relative transition-all" style={{ backgroundColor: colors.bgMain, color: colors.dark, selectionBackgroundColor: colors.secondary, selectionTextColor: '#fff' }}>
+    <div className="min-h-screen font-sans flex flex-col items-center relative transition-all text-white" style={{ backgroundColor: colors.bgMain, selectionBackgroundColor: colors.secondary, selectionTextColor: '#fff' }}>
       
       {/* Fondo Ligero */}
       <div className="fixed inset-0 z-0 opacity-40 mix-blend-multiply" style={{ backgroundColor: colors.bgMain }}></div>
@@ -71,7 +66,7 @@ const SeviAIHub = () => {
                  borderRadius: '2rem',
                  border: `4px solid white`,
                  backgroundColor: colors.bgAlt,
-                 boxShadow: `0 10px 25px -5px ${colors.soft}80`
+                 boxShadow: `0 10px 25px -5px rgba(0,0,0,0.1)`
                }}
             >
               <img 
@@ -83,30 +78,30 @@ const SeviAIHub = () => {
           )}
 
           {/* Nombre y Actividad */}
-          <h1 className="text-[26px] font-extrabold mb-1.5 leading-tight tracking-tight" style={{ color: colors.dark }}>
+          <h1 className="text-[26px] font-extrabold mb-1.5 leading-tight tracking-tight text-white drop-shadow-sm">
             {hubData.name}
           </h1>
           
-          <h2 className="text-[15px] font-medium mb-6 pb-4 border-b" style={{ color: colors.secondary, borderColor: colors.border }}>
+          <h2 className="text-[15px] font-medium mb-6 pb-4 border-b border-white/30 text-white/90">
             {hubData.activity}
           </h2>
 
           {/* Contacto Directo Cabecera */}
-          <div className="flex flex-col gap-3 w-full mb-8 text-[13px] font-medium px-2" style={{ color: colors.dark }}>
-            <a href={`mailto:${hubData.email}`} className="flex items-center justify-center gap-2 opacity-80 hover:opacity-100 transition-opacity bg-white/60 py-2.5 px-4 rounded-full border shadow-sm hover:shadow" style={{ borderColor: colors.border }}>
-              <Mail className="w-4 h-4" style={{ color: colors.primary }} /> <span>{hubData.email}</span>
+          <div className="flex flex-col gap-3 w-full mb-8 text-[13px] font-medium px-2 text-white">
+            <a href={`mailto:${hubData.email}`} className="flex items-center justify-center gap-2 opacity-90 hover:opacity-100 transition-all bg-white/20 hover:bg-white/30 py-2.5 px-4 rounded-full border border-white/40 shadow-sm hover:shadow">
+              <Mail className="w-4 h-4 text-white" /> <span>{hubData.email}</span>
             </a>
-            <a href={`tel:${hubData.phone.replace(/ /g, '')}`} className="flex items-center justify-center gap-2 opacity-80 hover:opacity-100 transition-opacity bg-white/60 py-2.5 px-4 rounded-full border shadow-sm hover:shadow" style={{ borderColor: colors.border }}>
-              <Phone className="w-4 h-4" style={{ color: colors.primary }} /> <span>{hubData.phone}</span>
+            <a href={`tel:${hubData.phone.replace(/ /g, '')}`} className="flex items-center justify-center gap-2 opacity-90 hover:opacity-100 transition-all bg-white/20 hover:bg-white/30 py-2.5 px-4 rounded-full border border-white/40 shadow-sm hover:shadow">
+              <Phone className="w-4 h-4 text-white" /> <span>{hubData.phone}</span>
             </a>
           </div>
           
           {/* Frase Principal y Descripción */}
           <div className="mb-10 w-full px-2 text-center flex flex-col items-center">
-            <h3 className="text-[20px] font-bold leading-snug mb-3 italic" style={{ color: colors.primary }}>
+            <h3 className="text-[20px] font-bold leading-snug mb-3 italic text-white drop-shadow-sm">
               "Todo empieza con estar presente.<br/>Pero que te recuerden lo cambia todo."
             </h3>
-            <p className="text-[15px] leading-relaxed opacity-80 max-w-[280px]" style={{ color: colors.dark }}>
+            <p className="text-[15px] leading-relaxed opacity-90 max-w-[280px] text-white">
               Ayudo a pymes a profesionalizar su presencia en Redes Sociales a través de auditorías, asesorías o gestión integral de redes.
             </p>
           </div>
@@ -123,8 +118,8 @@ const SeviAIHub = () => {
             style={{ 
               backgroundColor: colors.primary, 
               color: '#FFFFFF',
-              boxShadow: `0 14px 28px -6px ${colors.primary}90`,
-              border: `1px solid ${colors.secondary}40`
+              boxShadow: `0 14px 28px -6px rgba(122,87,139,0.5)`,
+              border: `1px solid rgba(255,255,255,0.2)`
             }}
           >
             <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -145,9 +140,9 @@ const SeviAIHub = () => {
                 rel="noopener noreferrer" 
                 className="group flex items-center justify-between p-4 rounded-2xl transition-all shadow-sm active:-translate-y-px hover:shadow-md"
                 style={{
-                  backgroundColor: 'white', // Bright contrast against the ivory background
+                  backgroundColor: 'white', 
                   border: `1px solid ${colors.border}`,
-                  color: colors.dark
+                  color: colors.primary
                 }}
               >
                 <div className="flex items-center gap-4">
@@ -156,21 +151,21 @@ const SeviAIHub = () => {
                   </div>
                   <div>
                     <span className="block font-bold text-[17px] leading-tight mb-0.5">{link.title}</span>
-                    <span className="text-[12px] font-medium" style={{ color: colors.secondary }}>{link.subtitle}</span>
+                    <span className="text-[12px] font-medium" style={{ color: colors.primary, opacity: 0.8 }}>{link.subtitle}</span>
                   </div>
                 </div>
-                <ChevronRight className="w-5 h-5 transform group-hover:translate-x-1 transition-all" style={{ color: colors.soft }} />
+                <ChevronRight className="w-5 h-5 transform group-hover:translate-x-1 transition-all" style={{ color: colors.primary, opacity: 0.5 }} />
               </a>
             ))}
           </div>
           
           {/* Horario de Atención */}
-          <div className="mt-2 pt-6 pb-2" style={{ borderTop: `1px dashed ${colors.border}` }}>
-            <div className="rounded-3xl p-6 relative overflow-hidden group transition-all" style={{ backgroundColor: colors.bgAlt }}>
-              <h3 className="text-sm font-bold mb-3 flex items-center justify-center gap-2 uppercase tracking-wide opacity-80" style={{ color: colors.dark }}>
-                 <Clock className="w-4 h-4" style={{ color: colors.primary }} /> Horario de atención
+          <div className="mt-2 pt-6 pb-2 border-t border-white/30">
+            <div className="rounded-3xl p-6 relative overflow-hidden group transition-all bg-white/20 border border-white/20">
+              <h3 className="text-sm font-bold mb-3 flex items-center justify-center gap-2 uppercase tracking-wide opacity-90 text-white">
+                 <Clock className="w-4 h-4 text-white" /> Horario de atención
               </h3>
-              <p className="text-[15px] font-medium leading-relaxed text-center" style={{ color: colors.dark }}>
+              <p className="text-[15px] font-medium leading-relaxed text-center text-white">
                 9:00 a 14:00 y de 17:00 a 19:00
               </p>
             </div>
@@ -180,13 +175,13 @@ const SeviAIHub = () => {
 
         {/* Footer */}
         <div className="mt-14 px-8 flex flex-col items-center transition-opacity pb-10">
-          <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-center mb-3" style={{ color: colors.soft }}>
+          <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-center mb-3 text-white/70">
              © 2026 Elena García
           </p>
-          <div className="w-6 h-px mb-4" style={{ backgroundColor: colors.border }}></div>
-          <p className="text-[10px] uppercase tracking-widest font-bold flex items-center gap-2 justify-center" style={{ color: colors.soft }}>
+          <div className="w-6 h-px mb-4 bg-white/30"></div>
+          <p className="text-[10px] uppercase tracking-widest font-bold flex items-center gap-2 justify-center text-white/70">
             SeviAI Ecosystem
-            <img src="/logo_sin_fondo.png" alt="SeviAI" className="h-4 w-auto opacity-70 grayscale mix-blend-multiply" />
+            <img src="/logo_sin_fondo.png" alt="SeviAI" className="h-4 w-auto opacity-70 grayscale mix-blend-multiply brightness-200" />
           </p>
         </div>
 
@@ -195,14 +190,13 @@ const SeviAIHub = () => {
       {/* Floating VCard Superior */}
       <button 
         onClick={handleSaveContact} 
-        className="fixed top-5 right-5 w-12 h-12 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 z-50 rounded-full flex items-center justify-center group cursor-pointer"
-        style={{ backgroundColor: colors.bgMain, border: `1px solid ${colors.border}` }}
+        className="fixed top-5 right-5 w-12 h-12 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 z-50 rounded-full flex items-center justify-center group cursor-pointer bg-white"
         title="Guardar contacto (vCard)"
       >
-        <Download className="w-5 h-5 group-hover:scale-110 transition-transform" style={{ color: colors.dark }} />
+        <Download className="w-5 h-5 group-hover:scale-110 transition-transform" style={{ color: colors.primary }} />
       </button>
 
-      {/* Floating WhatsApp - Adaptado a la paleta del Hub */}
+      {/* Floating WhatsApp */}
       <a 
         href={`https://wa.me/${hubData.whatsapp}`} 
         target="_blank" 
@@ -211,7 +205,7 @@ const SeviAIHub = () => {
         title="Contactar por WhatsApp"
         style={{ 
           backgroundColor: colors.primary, 
-          boxShadow: `0 10px 25px -5px ${colors.primary}80` 
+          boxShadow: `0 10px 25px -5px rgba(122,87,139,0.5)` 
         }}
       >
         <MessageCircle className="w-7 h-7 text-white drop-shadow-sm group-hover:scale-110 transition-transform" />
