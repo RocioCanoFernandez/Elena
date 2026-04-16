@@ -19,7 +19,7 @@ const SeviAIHub = () => {
     phone: "+34 687 65 28 46",
     whatsapp: "34687652846",
     profilePicture: "/elena_foto.JPG",
-    hubUrl: "https://elena.seviai.com"
+    hubUrl: "https://hub-hub-elena.npfusf.easypanel.host/"
   };
 
   const handleSaveContact = () => {
