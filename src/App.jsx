@@ -37,7 +37,7 @@ const SeviAIHub = () => {
   };
 
   const ctaLink = {
-    id: 'cta', title: "Trabajemos juntos", url: `mailto:${hubData.email}`, icon: Briefcase, subtitle: "Agenda una primera consulta gratis"
+    id: 'cta', title: "Trabajemos juntos", url: "https://cal.com/elena-garcia", icon: Calendar, subtitle: "Agenda una primera consulta gratis"
   };
 
   const primaryLinks = [
@@ -155,20 +155,28 @@ const SeviAIHub = () => {
           {/* CTA Principal y Destacado */}
           <a 
             href={ctaLink.url}
-            className="group flex flex-col items-center justify-center p-6 rounded-3xl transition-all active:scale-95 mb-6 text-center transform hover:-translate-y-1 relative overflow-hidden"
+            className="group block w-full p-8 rounded-[35px] transition-all duration-500 hover:-translate-y-2 mb-8 relative overflow-hidden text-left"
             style={{ 
               backgroundColor: colors.primary, 
               color: '#FFFFFF',
-              boxShadow: `0 14px 28px -6px ${colors.primary}90`,
+              boxShadow: `0 20px 40px -10px ${colors.primary}80`,
               border: `1px solid ${colors.secondary}40`
             }}
           >
-            <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div className="flex items-center justify-center gap-3 mb-1.5">
-               <ctaLink.icon className="w-6 h-6" />
-               <span className="font-extrabold text-2xl tracking-tight">{ctaLink.title}</span>
+            {/* Calendar Watermark Background */}
+            <div className="absolute -top-4 -right-6 p-4 opacity-[0.08] group-hover:opacity-[0.15] transition-all transform group-hover:scale-110 group-hover:rotate-12 duration-500 pointer-events-none">
+              <Calendar className="w-48 h-48" style={{ color: colors.bgMain }} />
             </div>
-            <span className="text-white/90 text-[13px] font-medium">{ctaLink.subtitle}</span>
+            
+            <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            
+            <div className="relative z-10 flex flex-col items-start">
+               <div className="bg-white/20 p-3 rounded-2xl mb-4 backdrop-blur-sm border border-white/20">
+                 <ctaLink.icon className="w-7 h-7 text-white" />
+               </div>
+               <span className="font-extrabold text-2xl tracking-tight mb-2 pr-8 leading-tight">{ctaLink.title}</span>
+               <span className="text-white/90 text-sm font-medium pr-10 leading-relaxed">{ctaLink.subtitle}</span>
+            </div>
           </a>
 
           {/* Enlaces Sociales Principales */}
