@@ -1,225 +1,257 @@
 import React from 'react';
-import { Mail, Linkedin, Instagram, Calendar, ArrowRight, Facebook, Star, ExternalLink, GraduationCap, Bot, MessageSquare, MessageCircle, Download } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Calendar, ChevronRight, MessageCircle, Download, Instagram, Linkedin, MessageSquare, Briefcase } from 'lucide-react';
+
+const colors = {
+  primary: '#5E2A74', // morado ciruela profundo
+  secondary: '#7B5A98', // violeta medio
+  soft: '#9C82B3', // lavanda grisácea
+  dark: '#1E1A35', // azul tinta oscuro
+  bgMain: '#F8F6FA', // marfil / blanco cálido
+  bgAlt: '#F1ECF6', // lila pálido
+  border: '#CBBFD8', // gris malva suave
+};
 
 const SeviAIHub = () => {
-  // ELIMINADO: El Chatbot ahora se carga desde index.html para evitar errores de React.
+  const hubData = {
+    name: "Elena García",
+    activity: "Social Media Manager con 15 años de experiencia",
+    email: "elena.mgarcia.s@gmail.com",
+    phone: "+34 687 65 28 46",
+    whatsapp: "34687652846",
+    profilePicture: "/elena_foto.JPG",
+    hubUrl: "https://hub-hub-elena.npfusf.easypanel.host/"
+  };
 
   const handleSaveContact = () => {
-    const vcard = `BEGIN:VCARD\r\nVERSION:3.0\r\nFN:Rocío Cano\r\nORG:SeviAI\r\nTITLE:IA práctica para hacer crecer tu empresa\r\nEMAIL:rocio@seviai.es\r\nURL:https://hub.seviai.es/\r\nEND:VCARD`;
+    const vcard = `BEGIN:VCARD\r\nVERSION:3.0\r\nFN:${hubData.name}\r\nTITLE:${hubData.activity}\r\nTEL;TYPE=WORK,VOICE:${hubData.phone}\r\nEMAIL;TYPE=INTERNET:${hubData.email}\r\nURL:${hubData.hubUrl}\r\nNOTE:SeviAI Hub\r\nEND:VCARD`;
+    
     const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'Rocio_Cano.vcf';
+    link.download = 'Elena_Garcia.vcf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
   };
 
+  const ctaLink = {
+    id: 'cta', title: "Trabajemos juntos", url: `mailto:${hubData.email}`, icon: Briefcase, subtitle: "Agenda una primera consulta gratis"
+  };
+
+  const primaryLinks = [
+    { id: 'instagram', title: "Instagram", url: "https://www.instagram.com/elena.socialmedia", icon: Instagram, subtitle: "Contenido y novedades" },
+    { id: 'linkedin', title: "LinkedIn", url: "https://www.linkedin.com/in/elenagarciasanchez", icon: Linkedin, subtitle: "Perfil profesional" },
+    { id: 'tiktok', title: "TikTok", url: "https://tiktok.com/@elenagarcia.socialmedia", icon: MessageSquare, subtitle: "Tips de comunicación" }
+  ];
+
+  const services = [
+    {
+      title: "Auditoría de redes sociales",
+      forWho: "Pymes que ya tienen redes activas, pero no ven resultados o quieren tener una opinión profesional para mejorarlas.",
+      whatIsIt: "Analizo tus perfiles y te entrego un diagnóstico claro con mejoras concretas y accionables para optimizar tu presencia."
+    },
+    {
+      title: "Asesoría de redes sociales",
+      forWho: "Pymes que quieren aprender a gestionar sus redes con criterio, acompañamiento profesional y una hoja de ruta clara.",
+      whatIsIt: "Sesiones formativas y prácticas personalizadas donde aprenderás qué hacer, cómo hacerlo y por qué. Aprenderás a tomar decisiones estratégicas para conseguir los resultados que necesitas."
+    },
+    {
+      title: "Gestión integral de redes sociales",
+      forWho: "Pymes que quieren delegar completamente sus redes a un profesional.",
+      whatIsIt: "Me encargo de todo: planificación, creación de contenido, publicación y seguimiento, asegurando una presencia coherente, constante y alineada con los objetivos de tu marca."
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-white text-slate-800 font-sans flex flex-col lg:flex-row selection:bg-red-600 selection:text-white relative">
+    <div className="min-h-screen font-sans flex flex-col items-center relative transition-all" style={{ backgroundColor: colors.bgMain, color: colors.dark, selectionBackgroundColor: colors.secondary, selectionTextColor: '#fff' }}>
+      
+      {/* Fondo Ligero */}
+      <div className="fixed inset-0 z-0 opacity-40 mix-blend-multiply" style={{ backgroundColor: colors.bgMain }}></div>
 
-      {/* LEFT SIDE: Content & Hero */}
-      <div className="w-full lg:w-1/2 p-8 md:p-12 lg:p-20 flex flex-col justify-center min-h-screen relative overflow-hidden">
-
-        {/* Brand Tag */}
-        <div className="inline-flex items-center px-4 py-2 rounded-full bg-red-50 text-red-600 text-[10px] font-black mb-8 w-fit border border-red-100 shadow-sm relative z-10 uppercase tracking-[0.15em]">
-          <span className="w-2 h-2 rounded-full bg-red-600 mr-2 animate-pulse"></span>
-          Inteligencia artificial con rostro humano
-        </div>
-
-        {/* Logo & Profile Section */}
-        <div className="flex items-center gap-8 mb-10 lg:mb-14 relative z-10">
-          <img
-            src="/SeviAI-asesoría y formación_horizontal_sin_fondo.png"
-            alt="SeviAI"
-            className="h-20 sm:h-24 w-auto object-contain"
-          />
-          <div className="h-20 w-px bg-slate-200 self-center hidden sm:block"></div>
-          <div className="relative">
-            <div className="w-28 h-28 rounded-full border-4 border-red-50 overflow-hidden shadow-2xl bg-slate-50">
-              <img
-                src="/rocio-headshot.JPG"
-                alt="Rocío"
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.target.src = "https://ui-avatars.com/api/?name=Roc%C3%ADo&background=C8202F&color=fff";
-                }}
+      {/* Contenedor Principal (Mobile First) */}
+      <div className="w-full max-w-md min-h-screen flex flex-col relative z-10 mx-auto bg-transparent pb-10">
+        
+        {/* Cabecera */}
+        <div className="pt-12 px-6 flex flex-col items-center text-center">
+          
+          {/* Foto de perfil vertical - Adaptado para no cortar manos (Portrait) */}
+          {hubData.profilePicture && (
+            <div 
+               className="w-40 h-56 sm:w-44 sm:h-64 object-cover overflow-hidden mb-6 shadow-2xl relative"
+               style={{ 
+                 borderRadius: '2rem',
+                 border: `4px solid white`,
+                 backgroundColor: colors.bgAlt,
+                 boxShadow: `0 10px 25px -5px ${colors.soft}80`
+               }}
+            >
+              <img 
+                src={hubData.profilePicture} 
+                alt={hubData.name} 
+                className="w-full h-full object-cover origin-top hover:scale-[1.02] transition-transform duration-500"
               />
             </div>
-            <div className="absolute bottom-2 right-2 w-6 h-6 bg-green-500 border-4 border-white rounded-full shadow-md"></div>
-          </div>
-        </div>
+          )}
 
-        {/* Main Headline */}
-        <h1 className="text-4xl lg:text-6xl font-black tracking-tight text-slate-900 mb-6 leading-[1.05] relative z-10">
-          IA práctica para hacer crecer tu empresa
-        </h1>
+          {/* Nombre y Actividad */}
+          <h1 className="text-[26px] font-extrabold mb-1.5 leading-tight tracking-tight" style={{ color: colors.dark }}>
+            {hubData.name}
+          </h1>
+          
+          <h2 className="text-[15px] font-medium mb-6 pb-4 border-b" style={{ color: colors.secondary, borderColor: colors.border }}>
+            {hubData.activity}
+          </h2>
 
-        {/* Subtitle */}
-        <p className="text-lg text-slate-600 mb-10 max-w-lg leading-relaxed relative z-10">
-          Servicios, formación y recursos para aplicar inteligencia artificial de forma clara y útil en tu negocio.
-        </p>
-
-        {/* Buttons List */}
-        <div className="flex flex-col gap-3 relative z-10 w-full max-w-md uppercase tracking-wider">
-
-          <a href="https://www.seviai.es/formacion-ia/" className="group flex items-center justify-between p-5 bg-[#C8202F] hover:bg-[#A51A27] rounded-3xl transition-all shadow-xl shadow-red-100 border-b-4 border-red-900/20 active:translate-y-1">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white border border-white/10">
-                <Bot className="w-7 h-7" />
-              </div>
-              <div>
-                <span className="block font-black text-white text-lg">Formación para empresas</span>
-                <span className="text-[10px] text-red-50 font-bold opacity-80">Capacitación B2B Premium</span>
-              </div>
-            </div>
-            <ArrowRight className="w-6 h-6 text-white/50 group-hover:text-white transform group-hover:translate-x-1 transition-all" />
-          </a>
-
-          <a href="https://ia-py-mi-booster.lovable.app/" className="group flex items-center justify-between p-5 bg-[#C8202F] hover:bg-[#A51A27] rounded-3xl transition-all shadow-xl shadow-red-100 border-b-4 border-red-900/20 active:translate-y-1">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white border border-white/10">
-                <GraduationCap className="w-7 h-7" />
-              </div>
-              <div>
-                <span className="block font-black text-white text-lg">Curso IA para PYMEs</span>
-                <span className="text-[10px] text-red-50 font-bold opacity-80">Autónomos y Emprendedores</span>
-              </div>
-            </div>
-            <ArrowRight className="w-6 h-6 text-white/50 group-hover:text-white transform group-hover:translate-x-1 transition-all" />
-          </a>
-
-          <a href="https://seviai.es" className="group flex items-center justify-between p-4 bg-slate-50 hover:bg-white border border-slate-200 rounded-3xl transition-all shadow-sm">
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-slate-400 group-hover:text-red-600 transition-colors border border-slate-100 font-bold">
-                <ExternalLink className="w-5 h-5" />
-              </div>
-              <div>
-                <span className="block font-black text-slate-900">Web SeviAI</span>
-                <span className="text-[10px] text-slate-500 font-bold">Servicios y Marca</span>
-              </div>
-            </div>
-            <ArrowRight className="w-5 h-5 text-slate-300 group-hover:text-red-400 transform group-hover:translate-x-1 transition-all" />
-          </a>
-
-          <a href="mailto:rocio@seviai.es" className="group flex items-center justify-between p-4 bg-slate-50 hover:bg-white border border-slate-200 rounded-3xl transition-all shadow-sm">
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-slate-400 group-hover:text-red-600 transition-colors border border-slate-100 font-bold">
-                <Mail className="w-5 h-5" />
-              </div>
-              <div>
-                <span className="block font-black text-slate-900">Contacto Directo</span>
-                <span className="text-[10px] text-slate-400 font-bold">rocio@seviai.es</span>
-              </div>
-            </div>
-            <ArrowRight className="w-5 h-5 text-slate-300 group-hover:text-red-400 transform group-hover:translate-x-1 transition-all" />
-          </a>
-
-          <a href="https://wa.me/message/HUZQ5TAK3ROOE1" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 bg-slate-50 hover:bg-white border border-slate-200 rounded-3xl transition-all shadow-sm">
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-slate-400 group-hover:text-green-600 transition-colors border border-slate-100 font-bold">
-                <MessageCircle className="w-5 h-5" />
-              </div>
-              <div>
-                <span className="block font-black text-slate-900">WhatsApp</span>
-                <span className="text-[10px] text-slate-400 font-bold">Hablemos por chat</span>
-              </div>
-            </div>
-            <ArrowRight className="w-5 h-5 text-slate-300 group-hover:text-green-400 transform group-hover:translate-x-1 transition-all" />
-          </a>
-
-        </div>
-
-        {/* Isotipo Mark Background */}
-        <div className="absolute bottom-[-10%] left-[-5%] opacity-[0.03] pointer-events-none z-0">
-          <img
-            src="/logo_sin_fondo.png"
-            alt=""
-            className="w-[500px] h-[500px] object-contain grayscale"
-          />
-        </div>
-      </div>
-
-      {/* RIGHT SIDE: Action Section & Conversion */}
-      <div className="w-full lg:w-1/2 p-6 sm:p-10 md:p-16 lg:p-20 flex flex-col justify-center relative bg-[#C8202F] min-h-screen">
-
-        {/* BACKGROUND IMAGE CON MEJOR VISIBILIDAD */}
-        <div
-          className="absolute inset-[0] z-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "linear-gradient(to bottom right, rgba(200, 32, 47, 0.45), rgba(139, 22, 33, 0.65)), url('/loop-copia.jpg')",
-            backgroundBlendMode: 'normal'
-          }}
-        ></div>
-
-        <div className="relative z-10 flex flex-col gap-6 max-w-xl mx-auto w-full">
-
-          {/* MAIN CTA: Agenda */}
-          <a href="https://cal.com/rocio-cano-seviai" className="block bg-white rounded-[45px] p-10 shadow-2xl hover:-translate-y-2 transition-all duration-500 group border-b-8 border-red-50 relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-110 duration-500">
-              <Calendar className="w-40 h-40 text-red-900" />
-            </div>
-            <div className="flex justify-between items-start mb-8 relative">
-              <div className="px-5 py-2 rounded-full bg-red-600 text-white text-[10px] font-black uppercase tracking-[0.2em]">RESERVAR CITA</div>
-              <div className="bg-red-50 text-[#C8202F] p-4 rounded-[20px] group-hover:rotate-12 transition-transform shadow-md">
-                <Calendar className="w-8 h-8" />
-              </div>
-            </div>
-            <h3 className="text-4xl font-black text-slate-900 mb-4 group-hover:text-[#C8202F] transition-colors leading-tight">Calendario</h3>
-            <p className="text-slate-600 text-lg leading-relaxed font-medium opacity-80">Reserva una cita conmigo y vemos cómo aplicar la IA de forma útil, realista y adaptada a tu empresa.</p>
-          </a>
-
-          {/* SOCIALS & REVIEWS BOX */}
-          <div className="bg-black/15 backdrop-blur-xl border border-white/10 rounded-[45px] p-8 md:p-10 flex flex-col gap-8">
-            <div className="text-center md:text-left flex flex-col gap-2">
-              <span className="text-red-200 font-black text-[10px] uppercase tracking-[0.35em] block">CONOCIMIENTO & REDES</span>
-              <p className="text-white text-base font-medium opacity-90">Sígueme para aprender sobre IA aplicada a negocios reales.</p>
-            </div>
-
-            <div className="grid grid-cols-3 gap-4">
-              <a href="https://linkedin.com/company/ia-sevilla" className="aspect-square bg-white/10 hover:bg-white text-white hover:text-red-700 transition-all rounded-[25px] flex items-center justify-center border border-white/10 shadow-lg">
-                <Linkedin className="w-8 h-8" />
-              </a>
-              <a href="https://www.instagram.com/rociocano.ia/" className="aspect-square bg-white/10 hover:bg-white text-white hover:text-red-700 transition-all rounded-[25px] flex items-center justify-center border border-white/10 shadow-lg">
-                <Instagram className="w-8 h-8" />
-              </a>
-              <a href="https://www.facebook.com/asesoriaia" className="aspect-square bg-white/10 hover:bg-white text-white hover:text-red-700 transition-all rounded-[25px] flex items-center justify-center border border-white/10 shadow-lg">
-                <Facebook className="w-8 h-8" />
-              </a>
-            </div>
-
-            <a href="https://search.google.com/local/writereview?placeid=ChIJ-fSgQlCXyIcROqGvv0X8eyI&source=g.page.m._&laa=merchant-review-solicitation" className="flex items-center justify-center gap-3 py-6 bg-white text-slate-900 hover:bg-red-50 rounded-[30px] transition-all font-black uppercase text-[11px] tracking-[0.2em] shadow-2xl">
-              <Star className="w-5 h-5 text-yellow-500 fill-current" />
-              Escribir reseña en Google
+          {/* Contacto Directo Cabecera */}
+          <div className="flex flex-col gap-3 w-full mb-8 text-[13px] font-medium px-2" style={{ color: colors.dark }}>
+            <a href={`mailto:${hubData.email}`} className="flex items-center justify-center gap-2 opacity-80 hover:opacity-100 transition-opacity bg-white/60 py-2.5 px-4 rounded-full border shadow-sm hover:shadow" style={{ borderColor: colors.border }}>
+              <Mail className="w-4 h-4" style={{ color: colors.primary }} /> <span>{hubData.email}</span>
+            </a>
+            <a href={`tel:${hubData.phone.replace(/ /g, '')}`} className="flex items-center justify-center gap-2 opacity-80 hover:opacity-100 transition-opacity bg-white/60 py-2.5 px-4 rounded-full border shadow-sm hover:shadow" style={{ borderColor: colors.border }}>
+              <Phone className="w-4 h-4" style={{ color: colors.primary }} /> <span>{hubData.phone}</span>
             </a>
           </div>
-
-          {/* SeviAI Ecosystem Signature */}
-          <div className="flex items-center justify-center gap-2 mt-8 opacity-60 hover:opacity-100 transition-opacity">
-            <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-white">
-              © 2026 Rocío Cano
-            </p>
-            <div className="w-px h-3 bg-white/20 mx-1"></div>
-            <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-white flex items-center gap-1.5">
-              SeviAI Ecosystem
-              <img src="/logo_sin_fondo.png" alt="SeviAI" className="h-3 w-auto brightness-0 invert opacity-80" />
+          
+          {/* Frase Principal y Descripción */}
+          <div className="mb-10 w-full px-2 text-center flex flex-col items-center">
+            <h3 className="text-[20px] font-bold leading-snug mb-3 italic" style={{ color: colors.primary }}>
+              "Todo empieza con estar presente.<br/>Pero que te recuerden lo cambia todo."
+            </h3>
+            <p className="text-[15px] leading-relaxed opacity-80 max-w-[280px]" style={{ color: colors.dark }}>
+              Ayudo a pymes a profesionalizar su presencia en Redes Sociales a través de auditorías, asesorías o gestión integral de redes.
             </p>
           </div>
 
         </div>
+
+        {/* Zona de Botones y Enlaces */}
+        <div className="px-6 flex flex-col gap-0 w-full flex-grow">
+          
+          {/* Servicios */}
+          <div className="mb-8 w-full">
+            <h3 className="text-[11px] font-bold uppercase tracking-widest mb-4 px-2 opacity-70 text-center" style={{ color: colors.dark }}>Mis Servicios</h3>
+            <div className="flex flex-col gap-4">
+              {services.map((service, index) => (
+                <div key={index} className="p-5 rounded-3xl transition-all shadow-sm border relative overflow-hidden" style={{ backgroundColor: 'white', borderColor: colors.border }}>
+                  <div className="absolute top-0 left-0 w-1.5 h-full opacity-60" style={{ backgroundColor: colors.primary }}></div>
+                  <h4 className="text-[18px] font-extrabold mb-3 leading-tight" style={{ color: colors.primary }}>
+                    {service.title}
+                  </h4>
+                  <div className="mb-3">
+                    <span className="text-[11px] font-black uppercase tracking-wider opacity-90 block mb-0.5" style={{ color: colors.secondary }}>Para quién es:</span>
+                    <p className="text-[14px] font-medium leading-relaxed" style={{ color: colors.dark }}>{service.forWho}</p>
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-black uppercase tracking-wider opacity-90 block mb-0.5" style={{ color: colors.secondary }}>En qué consiste:</span>
+                    <p className="text-[14px] font-medium leading-relaxed" style={{ color: colors.dark }}>{service.whatIsIt}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA Principal y Destacado */}
+          <a 
+            href={ctaLink.url}
+            className="group flex flex-col items-center justify-center p-6 rounded-3xl transition-all active:scale-95 mb-6 text-center transform hover:-translate-y-1 relative overflow-hidden"
+            style={{ 
+              backgroundColor: colors.primary, 
+              color: '#FFFFFF',
+              boxShadow: `0 14px 28px -6px ${colors.primary}90`,
+              border: `1px solid ${colors.secondary}40`
+            }}
+          >
+            <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="flex items-center justify-center gap-3 mb-1.5">
+               <ctaLink.icon className="w-6 h-6" />
+               <span className="font-extrabold text-2xl tracking-tight">{ctaLink.title}</span>
+            </div>
+            <span className="text-white/90 text-[13px] font-medium">{ctaLink.subtitle}</span>
+          </a>
+
+          {/* Enlaces Sociales Principales */}
+          <div className="flex flex-col gap-3 mb-6">
+            {primaryLinks.map((link) => (
+              <a 
+                key={link.id} 
+                href={link.url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="group flex items-center justify-between p-4 rounded-2xl transition-all shadow-sm active:-translate-y-px hover:shadow-md"
+                style={{
+                  backgroundColor: 'white', // Bright contrast against the ivory background
+                  border: `1px solid ${colors.border}`,
+                  color: colors.dark
+                }}
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center transition-colors" style={{ backgroundColor: colors.bgAlt, color: colors.primary }}>
+                    <link.icon className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <span className="block font-bold text-[17px] leading-tight mb-0.5">{link.title}</span>
+                    <span className="text-[12px] font-medium" style={{ color: colors.secondary }}>{link.subtitle}</span>
+                  </div>
+                </div>
+                <ChevronRight className="w-5 h-5 transform group-hover:translate-x-1 transition-all" style={{ color: colors.soft }} />
+              </a>
+            ))}
+          </div>
+          
+          {/* Horario de Atención */}
+          <div className="mt-4 pt-6 pb-2" style={{ borderTop: `1px dashed ${colors.border}` }}>
+            <div className="rounded-3xl p-6 relative overflow-hidden group transition-all" style={{ backgroundColor: colors.bgAlt }}>
+              <h3 className="text-sm font-bold mb-3 flex items-center justify-center gap-2 uppercase tracking-wide opacity-80" style={{ color: colors.dark }}>
+                 <Clock className="w-4 h-4" style={{ color: colors.primary }} /> Horario de atención
+              </h3>
+              <p className="text-[15px] font-medium leading-relaxed text-center" style={{ color: colors.dark }}>
+                9:00 a 14:00 y de 17:00 a 19:00
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Footer */}
+        <div className="mt-14 px-8 flex flex-col items-center transition-opacity pb-10">
+          <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-center mb-3" style={{ color: colors.soft }}>
+             © 2026 Elena García
+          </p>
+          <div className="w-6 h-px mb-4" style={{ backgroundColor: colors.border }}></div>
+          <p className="text-[10px] uppercase tracking-widest font-bold flex items-center gap-2 justify-center" style={{ color: colors.soft }}>
+            SeviAI Ecosystem
+            <img src="/logo_sin_fondo.png" alt="SeviAI" className="h-4 w-auto opacity-70 grayscale mix-blend-multiply" />
+          </p>
+        </div>
+
       </div>
 
-      {/* Floating Save Contact Button */}
-      <button
-        onClick={handleSaveContact}
-        className="fixed top-6 right-6 w-14 h-14 bg-white/90 backdrop-blur-md text-slate-700 rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl hover:scale-110 transition-all duration-300 z-50 group border border-white/50 cursor-pointer"
-        title="Descargar Contacto"
-        aria-label="Descargar Contacto"
+      {/* Floating VCard Superior */}
+      <button 
+        onClick={handleSaveContact} 
+        className="fixed top-5 right-5 w-12 h-12 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 z-50 rounded-full flex items-center justify-center group cursor-pointer"
+        style={{ backgroundColor: colors.bgMain, border: `1px solid ${colors.border}` }}
+        title="Guardar contacto (vCard)"
       >
-        <Download className="w-6 h-6 group-hover:text-[#C8202F] transition-colors drop-shadow-sm" />
+        <Download className="w-5 h-5 group-hover:scale-110 transition-transform" style={{ color: colors.dark }} />
       </button>
+
+      {/* Floating WhatsApp - Adaptado a la paleta del Hub */}
+      <a 
+        href={`https://wa.me/${hubData.whatsapp}`} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="fixed bottom-6 right-6 w-14 h-14 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 z-50 rounded-full flex items-center justify-center group cursor-pointer"
+        title="Contactar por WhatsApp"
+        style={{ 
+          backgroundColor: colors.primary, 
+          boxShadow: `0 10px 25px -5px ${colors.primary}80` 
+        }}
+      >
+        <MessageCircle className="w-7 h-7 text-white drop-shadow-sm group-hover:scale-110 transition-transform" />
+      </a>
 
     </div>
   );
