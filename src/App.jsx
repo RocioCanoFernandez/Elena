@@ -23,7 +23,7 @@ const SeviAIHub = () => {
   };
 
   const handleSaveContact = () => {
-    const vcard = `BEGIN:VCARD\r\nVERSION:3.0\r\nFN:${hubData.name}\r\nTITLE:${hubData.activity}\r\nTEL;TYPE=WORK,VOICE:${hubData.phone}\r\nEMAIL;TYPE=INTERNET:${hubData.email}\r\nURL:${hubData.hubUrl}\r\nNOTE:SeviAI Hub\r\nEND:VCARD`;
+    const vcard = `BEGIN:VCARD\r\nVERSION:3.0\r\nN:;${hubData.name};;;\r\nFN:${hubData.name}\r\nTITLE:${hubData.activity}\r\nTEL;TYPE=WORK,VOICE:${hubData.phone}\r\nEMAIL;TYPE=INTERNET:${hubData.email}\r\nURL:${hubData.hubUrl}\r\nNOTE:SeviAI Hub\r\nEND:VCARD`;
     
     const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
     const url = URL.createObjectURL(blob);
